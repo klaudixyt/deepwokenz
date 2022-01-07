@@ -1,9 +1,10 @@
-
+if game.PlaceId = 4111023553 then
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Deepwoken", "DarkTheme")
 
 --INFO
-local Info = Window:NewTab("Thanks for purchasing Deepwoken hub!")
+local Info = Window:NewTab("Info")
+local Info = Info:NewSection("Thanks for purchasing Deepwoken hub!")
 
 -- MAIN
 local Main = Window:NewTab("Main")
