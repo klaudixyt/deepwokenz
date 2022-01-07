@@ -1,4 +1,3 @@
-if game.PlaceId = 4111023553 then
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Deepwoken", "DarkTheme")
 
@@ -10,6 +9,13 @@ local Info = Info:NewSection("Thanks for purchasing Deepwoken hub!")
 local Main = Window:NewTab("Main")
 local MainSection = Main:NewSection("Main")
 
+--ESP
+local Esp = Window:NewTab("ESP")
+local Esp = Esp:NewSection("Will add item esp soon!")
+
+Esp:NewButton("Player ESP", "See players where they are!", function()
+	loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/ujigupumog"))()
+end)
 
 MainSection:NewToggle("Teleport To All Players (ban risk)", "Teleports to every player, use autoattack with this", function(state)
 	if state then
