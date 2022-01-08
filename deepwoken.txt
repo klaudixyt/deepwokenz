@@ -1,228 +1,234 @@
 if game.PlaceId == 4111023553 then
-      local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Deepwoken", "DarkTheme")
+		local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+		local Window = Library.CreateLib("Deepwoken", "DarkTheme")
 
---INFO
-local Info = Window:NewTab("Info")
-local Info = Info:NewSection("Thanks for purchasing Deepwoken hub!")
+		--INFO
+		local Info = Window:NewTab("Info")
+		local Info = Info:NewSection("Thanks for purchasing Deepwoken hub!")
 
--- MAIN
-local Main = Window:NewTab("Main")
-local MainSection = Main:NewSection("Main")
+		-- MAIN
+		local Main = Window:NewTab("Main")
+		local MainSection = Main:NewSection("Main")
 
---ESP
-local Esp = Window:NewTab("ESP")
-local Esp = Esp:NewSection("Will add item esp soon!")
+		--ESP
+		local Esp = Window:NewTab("ESP")
+		local Esp = Esp:NewSection("Will add item esp soon!")
 
-Esp:NewButton("Player ESP", "See players where they are!", function()
-	loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/ujigupumog"))()
-end)
+		Esp:NewButton("Player ESP", "See players where they are!", function()
+			loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/ujigupumog"))()
+		end)
 
-MainSection:NewToggle("Teleport To All Players (ban risk)", "Teleports to every player, use autoattack with this", function(state)
-	if state then
-		_G.tp = true
-		while _G.tp do
-			for i,v in pairs(game:GetService'Players':GetPlayers()) do
-				if v.Name ~= game:GetService'Players'.LocalPlayer.Name then
+		MainSection:NewToggle("Teleport To All Players (ban risk)", "Teleports to every player, use autoattack with this", function(state)
+			if state then
+				_G.tp = true
+				while _G.tp do
+					for i,v in pairs(game:GetService'Players':GetPlayers()) do
+						if v.Name ~= game:GetService'Players'.LocalPlayer.Name then
+							repeat
+								wait(0.05)
+								game:GetService'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
+								game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass'Tool':Activate()
+							until v.Character.Humanoid.Health == 0
+						end
+					end
+				end
+			else
+				_G.tp = false
+			end
+		end)
+
+
+		MainSection:NewButton("AutoAttack (x)", "Make sure to equip weapon first", function()
+			toggle = false
+			game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
+				if toggle then
 					repeat
-						wait(0.05)
-						game:GetService'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
-						game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass'Tool':Activate()
-					until v.Character.Humanoid.Health == 0
+						mouse1click()
+						wait(.1)
+					until toggle == false
 				end
-			end
-		end
-	else
-		_G.tp = false
-	end
-end)
+			end)
 
+			game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
 
-MainSection:NewButton("AutoAttack (x)", "Make sure to equip weapon first", function()
-	toggle = false
-	game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
-		if toggle then
-			repeat
-				mouse1click()
-				wait(.1)
-			until toggle == false
-		end
-	end)
-
-	game.Players.LocalPlayer:GetMouse().KeyDown:connect(function(key)
-
-		if key == "x" then 
-			toggle = not toggle
-		end
-	end)
-end)
-
-MainSection:NewButton("Zoom Out Infinite", "You can zoom out infinitely", function()
-	game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = math.huge
-end)
-
-MainSection:NewButton("Click Destroy", "Ctrl + click to destroy", function()
-	local Plr = game:GetService("Players").LocalPlayer
-	local Mouse = Plr:GetMouse()
-
-	Mouse.Button1Down:connect(function()
-		if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
-		if not Mouse.Target then return end
-		Mouse.Target:Destroy()
-	end)
-end)
-
-MainSection:NewButton("Anti AFK", "Prevent you to get kicked from game when idle", function()
-	local VirtualUser=game:service'VirtualUser'
-	game:service'Players'.LocalPlayer.Idled:connect(function()
-		VirtualUser:CaptureController()
-		VirtualUser:ClickButton2(Vector2.new())
-	end)
-end)
-
--- PLAYER
-local Player = Window:NewTab("Local Player")
-local PlayerSection = Player:NewSection("Local Player")
-
-PlayerSection:NewSlider("Walkspeed", "Changes the WalkSpeed", 150, 16, function(v)
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
-end)
-
-PlayerSection:NewSlider("Jumppower", "Changes the JumpPower", 150, 50, function(v)
-	game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
-end)
-
-PlayerSection:NewButton("NoClip (n)", "Go through stuff", function()
-	local Player = game.Players.LocalPlayer
-	local Mouse  = Player:GetMouse();
-
-	Mouse.KeyDown:connect(function(key)
-		if key == "n" then
-			local plr = game:GetService("Players")local Z=game:GetService("Players").LocalPlayer;function Torso(plr)if plr.Character then if plr.Character:FindFirstChild('UpperTorso')then return plr.Character.UpperTorso else return plr.Character.Torso end end end;if Clip==true then Clip=false;return end;Clip=true;game:GetService("RunService").Stepped:connect(function()Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightFoot.Touched:connect(function(_)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftFoot.Touched:connect(function(a0)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightLowerLeg.Touched:connect(function(a1)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftLowerLeg.Touched:connect(function(a2)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightHand.Touched:connect(function(a3)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftHand.Touched:connect(function(a4)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.Head.Touched:connect(function(a5)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.Torso.Touched:connect(function(a6)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)
-		end
-	end)
-end)
-
-PlayerSection:NewButton("Reset Character", "Resets your character/kills you", function()
-	game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
-end)
-
-
-PlayerSection:NewButton("Fly (e)", "Makes you fly when you press e or unfly", function()
-	--Good fly lol
-	repeat wait()
-	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Torso") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
-	local mouse = game.Players.LocalPlayer:GetMouse()
-	repeat wait() until mouse
-	local plr = game.Players.LocalPlayer
-	local torso = plr.Character.Torso
-	local flying = true
-	local deb = true
-	local ctrl = {f = 0, b = 0, l = 0, r = 0}
-	local lastctrl = {f = 0, b = 0, l = 0, r = 0}
-	local maxspeed = 75
-	local speed = 0
-
-	function Fly()
-		local bg = Instance.new("BodyGyro", torso)
-		bg.P = 9e4
-		bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
-		bg.cframe = torso.CFrame
-		local bv = Instance.new("BodyVelocity", torso)
-		bv.velocity = Vector3.new(0,0.1,0)
-		bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
-		repeat wait()
-			plr.Character.Humanoid.PlatformStand = true
-			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
-				speed = speed+.5+(speed/maxspeed)
-				if speed > maxspeed then
-					speed = maxspeed
+				if key == "x" then 
+					toggle = not toggle
 				end
-			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
-				speed = speed-1
-				if speed < 0 then
-					speed = 0
+			end)
+		end)
+		
+		MainSection:NewButton("Intelligence farm", "Farming intelligence", function()
+			loadstring(game:HttpGet(('https://pastebin.com/raw/xy026H0C'),true))()
+			wait(0.1)
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/Introvert1337/RobloxReleases/master/Scripts/Deepwoken_Intelligence_Farm.lua"))()
+		end)
+
+		MainSection:NewButton("Zoom Out Infinite", "You can zoom out infinitely", function()
+			game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = math.huge
+		end)
+
+		MainSection:NewButton("Click Destroy", "Ctrl + click to destroy", function()
+			local Plr = game:GetService("Players").LocalPlayer
+			local Mouse = Plr:GetMouse()
+
+			Mouse.Button1Down:connect(function()
+				if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+				if not Mouse.Target then return end
+				Mouse.Target:Destroy()
+			end)
+		end)
+
+		MainSection:NewButton("Anti AFK", "Prevent you to get kicked from game when idle", function()
+			local VirtualUser=game:service'VirtualUser'
+			game:service'Players'.LocalPlayer.Idled:connect(function()
+				VirtualUser:CaptureController()
+				VirtualUser:ClickButton2(Vector2.new())
+			end)
+		end)
+
+		-- PLAYER
+		local Player = Window:NewTab("Local Player")
+		local PlayerSection = Player:NewSection("Local Player")
+
+		PlayerSection:NewSlider("Walkspeed", "Changes the WalkSpeed", 150, 16, function(v)
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+		end)
+
+		PlayerSection:NewSlider("Jumppower", "Changes the JumpPower", 150, 50, function(v)
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+		end)
+
+		PlayerSection:NewButton("NoClip (n)", "Go through stuff", function()
+			local Player = game.Players.LocalPlayer
+			local Mouse  = Player:GetMouse();
+
+			Mouse.KeyDown:connect(function(key)
+				if key == "n" then
+					local plr = game:GetService("Players")local Z=game:GetService("Players").LocalPlayer;function Torso(plr)if plr.Character then if plr.Character:FindFirstChild('UpperTorso')then return plr.Character.UpperTorso else return plr.Character.Torso end end end;if Clip==true then Clip=false;return end;Clip=true;game:GetService("RunService").Stepped:connect(function()Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightFoot.Touched:connect(function(_)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftFoot.Touched:connect(function(a0)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightLowerLeg.Touched:connect(function(a1)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftLowerLeg.Touched:connect(function(a2)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightHand.Touched:connect(function(a3)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftHand.Touched:connect(function(a4)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.Head.Touched:connect(function(a5)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.Torso.Touched:connect(function(a6)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)
 				end
-			end
-			if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
-				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
-				lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
-			elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
-				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
-			else
+			end)
+		end)
+
+		PlayerSection:NewButton("Reset Character", "Resets your character/kills you", function()
+			game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
+		end)
+
+
+		PlayerSection:NewButton("Fly (e)", "Makes you fly when you press e or unfly", function()
+			--Good fly lol
+			repeat wait()
+			until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Torso") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
+			local mouse = game.Players.LocalPlayer:GetMouse()
+			repeat wait() until mouse
+			local plr = game.Players.LocalPlayer
+			local torso = plr.Character.Torso
+			local flying = true
+			local deb = true
+			local ctrl = {f = 0, b = 0, l = 0, r = 0}
+			local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+			local maxspeed = 75
+			local speed = 0
+
+			function Fly()
+				local bg = Instance.new("BodyGyro", torso)
+				bg.P = 9e4
+				bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+				bg.cframe = torso.CFrame
+				local bv = Instance.new("BodyVelocity", torso)
 				bv.velocity = Vector3.new(0,0.1,0)
+				bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+				repeat wait()
+					plr.Character.Humanoid.PlatformStand = true
+					if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+						speed = speed+.5+(speed/maxspeed)
+						if speed > maxspeed then
+							speed = maxspeed
+						end
+					elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+						speed = speed-1
+						if speed < 0 then
+							speed = 0
+						end
+					end
+					if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+						lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+					elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+						bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+					else
+						bv.velocity = Vector3.new(0,0.1,0)
+					end
+					bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+				until not flying
+				ctrl = {f = 0, b = 0, l = 0, r = 0}
+				lastctrl = {f = 0, b = 0, l = 0, r = 0}
+				speed = 0
+				bg:Destroy()
+				bv:Destroy()
+				plr.Character.Humanoid.PlatformStand = false
 			end
-			bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
-		until not flying
-		ctrl = {f = 0, b = 0, l = 0, r = 0}
-		lastctrl = {f = 0, b = 0, l = 0, r = 0}
-		speed = 0
-		bg:Destroy()
-		bv:Destroy()
-		plr.Character.Humanoid.PlatformStand = false
-	end
-	mouse.KeyDown:connect(function(key)
-		if key:lower() == "e" then
-			if flying then flying = false
-			else
-				flying = true
-				Fly()
+			mouse.KeyDown:connect(function(key)
+				if key:lower() == "e" then
+					if flying then flying = false
+					else
+						flying = true
+						Fly()
+					end
+				elseif key:lower() == "w" then
+					ctrl.f = 1
+				elseif key:lower() == "s" then
+					ctrl.b = -1
+				elseif key:lower() == "a" then
+					ctrl.l = -1
+				elseif key:lower() == "d" then
+					ctrl.r = 1
+				end
+			end)
+			mouse.KeyUp:connect(function(key)
+				if key:lower() == "w" then
+					ctrl.f = 0
+				elseif key:lower() == "s" then
+					ctrl.b = 0
+				elseif key:lower() == "a" then
+					ctrl.l = 0
+				elseif key:lower() == "d" then
+					ctrl.r = 0
+				end
+			end)
+			Fly()
+		end)
+
+		--Visual
+		local Visual = Window:NewTab("Visual")
+		local Visual = Visual:NewSection("Visual Effects")
+
+		Visual:NewButton("No Blur", "Removes blur", function()
+			while wait() do
+				for _,blz in pairs(game.Lighting:children()) do
+					if blz:IsA('BlurEffect') then
+						blz:remove()
+					end
+				end
 			end
-		elseif key:lower() == "w" then
-			ctrl.f = 1
-		elseif key:lower() == "s" then
-			ctrl.b = -1
-		elseif key:lower() == "a" then
-			ctrl.l = -1
-		elseif key:lower() == "d" then
-			ctrl.r = 1
-		end
-	end)
-	mouse.KeyUp:connect(function(key)
-		if key:lower() == "w" then
-			ctrl.f = 0
-		elseif key:lower() == "s" then
-			ctrl.b = 0
-		elseif key:lower() == "a" then
-			ctrl.l = 0
-		elseif key:lower() == "d" then
-			ctrl.r = 0
-		end
-	end)
-	Fly()
-end)
+		end)
 
---Visual
-local Visual = Window:NewTab("Visual")
-local Visual = Visual:NewSection("Visual Effects")
-
-Visual:NewButton("No Blur", "Removes blur", function()
-	while wait() do
-		for _,blz in pairs(game.Lighting:children()) do
-			if blz:IsA('BlurEffect') then
-				blz:remove()
+		Visual:NewButton("No Fog", "Removes fog", function()
+			while true do
+				wait()
+				game.Lighting.FogEnd = 1000000
+				wait()
 			end
-		end
+			wait(0.1)
+			loadstring(game:HttpGet(('https://pastebin.com/raw/xy026H0C'),true))()
+		end)
+
+		--Credits
+		local Credits = Window:NewTab("Credits")
+		local Credits = Credits:NewSection("Script made by alfa#2144")
+		Credits:NewButton("Discord Invite", "Copies discord invite", function()
+			setclipboard("https://discord.com/invite/2uSkKWQGsx")
+		end)
+
+	else
+		game:GetService("Players").LocalPlayer:Kick("Unsupported game.")
 	end
-end)
-
-Visual:NewButton("No Fog", "Removes fog", function()
-	while true do
-		wait()
-		game.Lighting.FogEnd = 1000000
-		wait()
-	end
-	wait()
-	loadstring(game:HttpGet(('https://pastebin.com/raw/xy026H0C'),true))()
-end)
-
---Credits
-local Credits = Window:NewTab("Credits")
-local Credits = Credits:NewSection("Script made by alfa#2144")
-Credits:NewButton("Discord Invite", "Copies discord invite", function()
-	setclipboard("https://discord.com/invite/2uSkKWQGsx")
-end)
-
-else
-      game:GetService("Players").LocalPlayer:Kick("Unsupported game.")
-end
