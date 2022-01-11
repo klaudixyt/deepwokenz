@@ -1,5 +1,5 @@
 if game.PlaceId == 4111023553 then
    loadstring(game:HttpGet("https://raw.githubusercontent.com/klaudixyt/deepz/main/deepwokenmain.txt"))()
 else
-   game.Player.LocalPlayer:Kick("You are on unsupported game!")
+   game.Players.LocalPlayer:Kick("You are on unsupported game!")
 end
