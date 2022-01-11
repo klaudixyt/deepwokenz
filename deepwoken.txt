@@ -1,8 +1,3 @@
-
--- Deepwoken Hub
-
-
-
 	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 	local Window = Library.CreateLib("Deepwoken Hub", "DarkTheme")
 
@@ -141,6 +136,10 @@
 				local plr = game:GetService("Players")local Z=game:GetService("Players").LocalPlayer;function Torso(plr)if plr.Character then if plr.Character:FindFirstChild('UpperTorso')then return plr.Character.UpperTorso else return plr.Character.Torso end end end;if Clip==true then Clip=false;return end;Clip=true;game:GetService("RunService").Stepped:connect(function()Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightFoot.Touched:connect(function(_)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftFoot.Touched:connect(function(a0)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightLowerLeg.Touched:connect(function(a1)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftLowerLeg.Touched:connect(function(a2)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.RightHand.Touched:connect(function(a3)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.LeftHand.Touched:connect(function(a4)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.Head.Touched:connect(function(a5)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)Z.Character.Torso.Touched:connect(function(a6)Torso(Z).CanCollide=not Clip;Z.Character.Head.CanCollide=not Clip;Z.Character.HumanoidRootPart.CanCollide=not Clip;if Z.Character.UpperTorso then Z.Character.LowerTorso.CanCollide=not Clip end end)
 			end
 		end)
+	end)
+	
+	PlayerSection:NewButton("Reset Character", "Resets your char", function()
+		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 	end)
 	
 	--Movement
