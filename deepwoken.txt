@@ -1,4 +1,4 @@
-	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 	local Window = Library.CreateLib("Deepwoken Hub", "DarkTheme")
 
 	--INFO
@@ -14,7 +14,7 @@
 	local Esp = Esp:NewSection("Will add item esp soon!")
 
 	Esp:NewButton("Player ESP", "See players where they are!", function()
-		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/vasalitihi"))()
+		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/ujigupumog"))()
 	end)
 
 	MainSection:NewToggle("Teleport To All Players (ban risk)", "Teleports to every player, use autoattack with this", function(state)
@@ -158,32 +158,34 @@
 		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/muqahanipe"))()
 	end)
 	
-	Movement:NewButton("Walkspeed", "Changes the walkspeed to selected speed", function()
-		local ws = 32 -- walkspeed to tween to
-		local timetotween = 1 -- how long it takes to tween to the specified walkspeed in seconds.
-		game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.Humanoid,TweenInfo.new(timetotween),{WalkSpeed = ws}):Play()
+	Movement:NewButton("Walkspeed (q)", "Changes the walkspeed to speed", function()
+		speed = true
+
+		plr = game:GetService("Players").LocalPlayer
+		mouse = plr:GetMouse()
+
+		mouse.KeyDown:connect(function(key)
+			if key == "q" then
+				if speed == false then
+					speed = true
+					plr.Character.wouldyoulookatthis.Name = "Humanoid"
+					plr.Character.Humanoid.WalkSpeed = 16
+				else
+					plr.Character.Humanoid.Name = "wouldyoulookatthis"
+					plr.Character.wouldyoulookatthis.WalkSpeed = 49
+					speed = false
+				end
+			end
+		end)
 	end)
 
-	Movement:NewButton("Set Walkspeed to Normal", "Changes the walkspeed to normal", function()
-		local ws = 16 -- walkspeed to tween to
-		local timetotween = 1 -- how long it takes to tween to the specified walkspeed in seconds.
-		game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.Humanoid,TweenInfo.new(timetotween),{WalkSpeed = ws}):Play()
-	end)
-
-	Movement:NewButton("JumpPower", "Changes the walkspeed to normal", function()
+	Movement:NewButton("JumpPower (still fixing, might not work)", "Changes the walkspeed to normal", function()
 		local p = game.Players.LocalPlayer.Character.HumanoidRootPart
 		local yeah_this_is_yeah = Instance.new("BodyForce")
 		yeah_this_is_yeah.Parent = p
 		yeah_this_is_yeah.Force = Vector3.new(0, 2000, 0)
 	end)
 
-	Movement:NewButton("Set JumpPower to Normal", "Changes the jumppower to normal", function()
-		local p = game.Players.LocalPlayer.Character.HumanoidRootPart
-		local yeah_this_is_yeah = Instance.new("BodyForce")
-		yeah_this_is_yeah.Parent = p
-		yeah_this_is_yeah.Force = Vector3.new(0, 0, 0)
-	end)
-	
 	--Visual
 	local Visual = Window:NewTab("Visual")
 	local Visual = Visual:NewSection("Visual Effects")
