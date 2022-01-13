@@ -14,7 +14,7 @@
 	local Esp = Esp:NewSection("Will add item esp soon!")
 
 	Esp:NewButton("Player ESP", "See players where they are!", function()
-		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/ujigupumog"))()
+		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/obezifadad"))()
 	end)
 
 	MainSection:NewToggle("Teleport To All Players (ban risk)", "Teleports to every player, use autoattack with this", function(state)
@@ -177,13 +177,6 @@
 				end
 			end
 		end)
-	end)
-
-	Movement:NewButton("JumpPower (still fixing, might not work)", "Changes the walkspeed to normal", function()
-		local p = game.Players.LocalPlayer.Character.HumanoidRootPart
-		local yeah_this_is_yeah = Instance.new("BodyForce")
-		yeah_this_is_yeah.Parent = p
-		yeah_this_is_yeah.Force = Vector3.new(0, 2000, 0)
 	end)
 
 	--Visual
