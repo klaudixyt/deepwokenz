@@ -158,14 +158,14 @@
 		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/muqahanipe"))()
 	end)
 	
-	Movement:NewButton("Walkspeed (y)", "Changes the walkspeed to speed", function()
+	Movement:NewButton("Walkspeed (c)", "Changes the walkspeed to speed", function()
 		speed = true
 
 		plr = game:GetService("Players").LocalPlayer
 		mouse = plr:GetMouse()
 
 		mouse.KeyDown:connect(function(key)
-			if key == "y" then
+			if key == "c" then
 				if speed == false then
 					speed = true
 					plr.Character.wouldyoulookatthis.Name = "Humanoid"
