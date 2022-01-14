@@ -1,5 +1,5 @@
-        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-	local Window = Library.CreateLib("Deepwoken Hub", "DarkTheme")
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+	local Window = Library.CreateLib("Deepwoken Hub v1.1", "DarkTheme")
 
 	--INFO
 	local Info = Window:NewTab("Info")
@@ -35,11 +35,11 @@
 			_G.tp = false
 		end
 	end)
-	
+
 	MainSection:NewButton("Auto Parry", "Defends you automatically", function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/WjR6bffM"))()
 	end)
-	
+
 	MainSection:NewButton("No Fall DMG", "Can't get damage by falling", function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/VpLv5X6g"))()
 	end)
@@ -92,7 +92,7 @@
 	-- PLAYER
 	local Player = Window:NewTab("Local Player")
 	local PlayerSection = Player:NewSection("Local Player")
-	
+
 	PlayerSection:NewButton("INF Jump", "Makes you jump as many times as you want!", function()
 		_G.infinjump = true
 
@@ -122,57 +122,57 @@
 			end
 		end)
 	end)
-	
+
 	PlayerSection:NewButton("INF Jump Off", "Turns off infinite jump", function()
 		_G.infinjump = false
 	end)
 
 	PlayerSection:NewButton("NoClip (n)", "Go through stuff", function()
 		local nckey = "n";
-local nclip = false;
-local lp = game.Players.LocalPlayer
-local ms = lp:GetMouse()
-local rm = getrawmetatable(game)
-local index = rm.__index
-local bv = Instance.new("BoolValue");
-bv.Value = false;
-setreadonly(rm,false)
+		local nclip = false;
+		local lp = game.Players.LocalPlayer
+		local ms = lp:GetMouse()
+		local rm = getrawmetatable(game)
+		local index = rm.__index
+		local bv = Instance.new("BoolValue");
+		bv.Value = false;
+		setreadonly(rm,false)
 
-rm.__index = function(self,j)
-   if tostring(self) == "Part" and tostring(j) == "Anchored" then
-       return index(bv,"Value")
-end
-   return index(self,j)
-end
+		rm.__index = function(self,j)
+			if tostring(self) == "Part" and tostring(j) == "Anchored" then
+				return index(bv,"Value")
+			end
+			return index(self,j)
+		end
 
 
-game:GetService("RunService").Stepped:Connect(function()
-   if nclip == true then
-       lp.Character.Head.CanCollide = false
-       lp.Character.Torso.CanCollide = false
-   end
-end);
+		game:GetService("RunService").Stepped:Connect(function()
+			if nclip == true then
+				lp.Character.Head.CanCollide = false
+				lp.Character.Torso.CanCollide = false
+			end
+		end);
 
-ms.KeyDown:Connect(function(k)
-   if k == nckey then
-       nclip = not nclip
-       if nclip == true then
-           print("Noclip is on.")
-       else
-           print("Noclip if off.")
-       end
-   end
-end)
+		ms.KeyDown:Connect(function(k)
+			if k == nckey then
+				nclip = not nclip
+				if nclip == true then
+					print("Noclip is on.")
+				else
+					print("Noclip if off.")
+				end
+			end
+		end)
 	end)
-	
+
 	PlayerSection:NewButton("Reset Character", "Resets your char", function()
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 	end)
-	
+
 	--Movement
 	local Movement = Window:NewTab("Movement")
 	local Movement = Movement:NewSection("Movement")
-	
+
 	Movement:NewButton("Fly Speed 1", "Makes you fly on speed 1", function()
 		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/wawonekofa"))()
 	end)
@@ -184,7 +184,7 @@ end)
 	Movement:NewButton("Fly Speed 3", "Makes you fly on speed 3", function()
 		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/muqahanipe"))()
 	end)
-	
+
 	Movement:NewButton("Walkspeed (c)", "Changes the walkspeed to speed", function()
 		speed = true
 
@@ -229,7 +229,7 @@ end)
 		wait(0.1)
 		loadstring(game:HttpGet(('https://pastebin.com/raw/xy026H0C'),true))()
 	end)
-	
+
 	Visual:NewButton("Fullbright", "Removes fog and adds brightness", function()
 		if not _G.FullBrightExecuted then
 
@@ -338,7 +338,7 @@ end)
 		_G.FullBrightExecuted = true
 		_G.FullBrightEnabled = not _G.FullBrightEnabled
 	end)
-	
+
 	Visual:NewButton("Free Camera (to disable reset char)", "Let's you explore the map without goin anywhere", function()
 		local cam = game.Workspace.CurrentCamera
 		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
@@ -394,9 +394,26 @@ end)
 			z.CFrame = z.CFrame * Move
 		end
 	end)
+
+	Visual:NewButton("Name Hider", "Hider localplayers name so others can't see it", function()
+		for i=1, 1 do
+			for _,v in pairs(game.Players.LocalPlayer.Character.Head:GetChildren()) do
+				if (v:IsA("BillboardGui")) then
+					v:ClearAllChildren()
+				end
+			end
+		end
+		for i=1, 1 do
+			for _,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+				if (v:IsA("BillboardGui")) then
+					v:ClearAllChildren()
+				end
+			end
+		end
+	end)
 	
 	Visual:NewButton("Mod Detection", "Send you a message when mod/admin joins", function()
-        local stafflist = {
+		local stafflist = {
 			[151239872] = true,
 			[167825083] = true,
 			[17126105] = true,
