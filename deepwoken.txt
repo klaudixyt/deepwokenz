@@ -37,7 +37,11 @@
 	end)
 
 	MainSection:NewButton("Auto Parry", "Defends you automatically", function()
-		loadstring(game:HttpGet("https://pastebin.com/raw/WjR6bffM"))()
+		local virtualUser = game:GetService('VirtualUser')
+		virtualUser:CaptureController()
+
+		virtualUser:SetKeyDown('0x46')
+		--loadstring(game:HttpGet("https://pastebin.com/raw/WjR6bffM"))()
 	end)
 
 	MainSection:NewButton("No Fall DMG", "Can't get damage by falling", function()
@@ -94,73 +98,43 @@
 	local PlayerSection = Player:NewSection("Local Player")
 
 	PlayerSection:NewButton("INF Jump", "Makes you jump as many times as you want!", function()
-		_G.infinjump = true
+		plr = game.Players.LocalPlayer
+		mouse = plr:GetMouse()
+		mouse.KeyDown:connect(function(key)
 
-		local Player = game:GetService("Players").LocalPlayer
-		local Mouse = Player:GetMouse()
-		Mouse.KeyDown:connect(function(k)
-			if _G.infinjump then
-				if k:byte() == 32 then
-					Humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-					Humanoid:ChangeState("Jumping")
-					wait(0.1)
-					Humanoid:ChangeState("Seated")
-				end
-			end
-		end)
-
-		local Player = game:GetService("Players").LocalPlayer
-		local Mouse = Player:GetMouse()
-		Mouse.KeyDown:connect(function(k)
-			k = k:lower()
-			if k == "f" then
-				if _G.infinjump == true then
-					_G.infinjump = false
-				else
-					_G.infinjump = true
-				end
+			if key == " " then
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState(3)
+				wait()
 			end
 		end)
 	end)
 
-	PlayerSection:NewButton("INF Jump Off", "Turns off infinite jump", function()
-		_G.infinjump = false
-	end)
+	PlayerSection:NewButton("Freeze Character in Air/Ground (e)", "When you jump press e", function()
+		noclip = false
+		game:GetService('RunService').Stepped:connect(function()
+			if noclip then
+				local on = true;
 
-	PlayerSection:NewButton("NoClip (n)", "Go through stuff", function()
-		local nckey = "n";
-		local nclip = false;
-		local lp = game.Players.LocalPlayer
-		local ms = lp:GetMouse()
-		local rm = getrawmetatable(game)
-		local index = rm.__index
-		local bv = Instance.new("BoolValue");
-		bv.Value = false;
-		setreadonly(rm,false)
-
-		rm.__index = function(self,j)
-			if tostring(self) == "Part" and tostring(j) == "Anchored" then
-				return index(bv,"Value")
+				game:GetService("Players")
+				.LocalPlayer
+				.Character
+				.HumanoidRootPart
+				.Anchored = on;
 			end
-			return index(self,j)
-		end
+		end)
+		plr = game.Players.LocalPlayer
+		mouse = plr:GetMouse()
+		mouse.KeyDown:connect(function(key)
 
+			if key == "e" then
+				noclip = not noclip
+				local on = false;
 
-		game:GetService("RunService").Stepped:Connect(function()
-			if nclip == true then
-				lp.Character.Head.CanCollide = false
-				lp.Character.Torso.CanCollide = false
-			end
-		end);
-
-		ms.KeyDown:Connect(function(k)
-			if k == nckey then
-				nclip = not nclip
-				if nclip == true then
-					print("Noclip is on.")
-				else
-					print("Noclip if off.")
-				end
+				game:GetService("Players")
+				.LocalPlayer
+				.Character
+				.HumanoidRootPart
+				.Anchored = on;
 			end
 		end)
 	end)
