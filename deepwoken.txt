@@ -109,34 +109,8 @@
 		end)
 	end)
 
-	PlayerSection:NewButton("Freeze Character in Air/Ground (e)", "When you jump press e", function()
-		noclip = false
-		game:GetService('RunService').Stepped:connect(function()
-			if noclip then
-				local on = true;
-
-				game:GetService("Players")
-				.LocalPlayer
-				.Character
-				.HumanoidRootPart
-				.Anchored = on;
-			end
-		end)
-		plr = game.Players.LocalPlayer
-		mouse = plr:GetMouse()
-		mouse.KeyDown:connect(function(key)
-
-			if key == "e" then
-				noclip = not noclip
-				local on = false;
-
-				game:GetService("Players")
-				.LocalPlayer
-				.Character
-				.HumanoidRootPart
-				.Anchored = on;
-			end
-		end)
+	PlayerSection:NewButton("(fixin it) Freeze Character in Air/Ground (e)", "When you jump press e", function()
+		
 	end)
 
 	PlayerSection:NewButton("Reset Character", "Resets your char", function()
