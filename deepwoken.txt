@@ -159,7 +159,7 @@
 		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/muqahanipe"))()
 	end)
 
-	Movement:NewButton("Walkspeed (c)", "Changes the walkspeed to speed", function()
+	Movement:NewButton("Walkspeed,c (ban risk)", "Changes the walkspeed to speed", function()
 		speed = true
 
 		plr = game:GetService("Players").LocalPlayer
