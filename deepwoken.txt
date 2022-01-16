@@ -159,25 +159,8 @@
 		loadstring(game:HttpGet("https://www.toptal.com/developers/hastebin/raw/muqahanipe"))()
 	end)
 
-	Movement:NewButton("Walkspeed,c (ban risk)", "Changes the walkspeed to speed", function()
-		speed = true
-
-		plr = game:GetService("Players").LocalPlayer
-		mouse = plr:GetMouse()
-
-		mouse.KeyDown:connect(function(key)
-			if key == "c" then
-				if speed == false then
-					speed = true
-					plr.Character.wouldyoulookatthis.Name = "Humanoid"
-					plr.Character.Humanoid.WalkSpeed = 16
-				else
-					plr.Character.Humanoid.Name = "wouldyoulookatthis"
-					plr.Character.wouldyoulookatthis.WalkSpeed = 49
-					speed = false
-				end
-			end
-		end)
+	Movement:NewButton("Walkspeed (L Shift)", "Changes the walkspeed with left shift key", function()
+		loadstring(game:HttpGet(('https://pastebin.com/raw/AfKeddPG'),true))()
 	end)
 
 	--Visual
