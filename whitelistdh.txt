@@ -1,0 +1,70 @@
+	local meinecodesrightnow = {
+	"8cc851ueb0a6b45573be73jkde5f0821", --- in use computery
+	"fe7f241a5fee13439a0549af9751a6fe",
+	"4afm7ba177a80922b35411ec5335e8c6", --- in use Jack Ringer
+	"cdd81d5d928200c407734e2dfab58f5a", --- in use Huncho Havo
+	"e89591314bbb078850pac3a0af1c5312", --- in use Dragusan
+	"6b909f955383d3c2793591cmmnbf191c", --- in use sza
+	"4a21cmz47ea3b8ab5fa2063pp10d52c9", --- in use BIGGEST PRO
+	"8c9aa6vrc0e45b68a89931pmn6te9521", --- in use DAVE
+	"344eav6c47f01358c2uu1b56c67ec8a1", --- in use Kon
+	"31c6b1ff7387e5pp2355919ce99567c9", --- in use marinastella
+	"a98c988796d00082d00239ed68ef9d45", --- in use Lit Karma
+	"8ec1d106bc8ae75b50253642c399eb6f", --- in use FezIn 
+	"83532d0c161d0d3299954602h3a6378c", --- in use Monkey D Syth
+	"8bbc5c04f8a711e4eefc11e3129ed067",
+	"72d9e088e4cebada3cc2cd11f5d5a5cf",
+	"03752d41cb7fca7b4510bb67926a88f3",
+	"cf3ecf395ce43f07be5effe122786f2c",
+	"2dff5dc383c158896488710d626ia4ad", --- in use by some chinese guy
+	"031fa97be12ee4ff00b048db25ed7c69", --- in use Daisy and Adrian
+	"df01fd5fb9dfe07585nnc963f19f206f", --- in use Tahir
+	"77b0c79c513cd99cfe0acbb33c3b80c8", --- in use XENO
+	"bd3de0c2294da0011ddae7b39aa40b4b", --- in use Deshawn
+	"80fdcf78ca9cfppka137575d2eba49b7", --- in use Evnts
+	"393c5eb0d7505842b2de2546fb6e28b5", --- in use Mew
+	"f2b1cdbc450068d4f9b4cd6fa427e1f9",
+	"92f68d98c08a6e3cee34b37f4ef029d5",
+	"aad085a77dc678nmb2e37aya6e68bfa3", --- in use aaronmineta
+	"2ebf350c3aae1696ac3mnbq2f0485a56", --- in use barney kallds
+	"8f9fcd4f6d0dd5a5eee517ef2991a21a",
+	--- in use Cuco
+	"8f9fcd4f6d0dd5a57776658f2984a21a",
+	"3cc1364b9adc2bcd038c1cdae6d1e317", --- in use yecamille, ckaleb 
+	"af4af7eaa8f189e92a10dd5f45076986", --- in use black person
+	"08f3f220b41d843589cb591739d6d39c", --- in use Prince Ketcha
+	"40404960c1ead44675ed965ece4d504c",
+	"800cdbc634a63272d8cd615530a2a0ad",
+	"f3f9a6f783b77b1fe030b7e9408ab02e", --- in use ashiin moment
+	"4f5ac8df6b24ce4dca6ca6febc0097e1", --- in use samproking
+	"c7815898ccfe821f77dcd136933ec5e8",
+	"1cc23f7cce0002a5d9e8642322334a91",
+	"4b8e74d2f754540227213476cded8bab",
+	}
+
+	local counter = 1
+	local keyCheck
+	for i,v in pairs(meinecodesrightnow) do
+		if counter == #meinecodesrightnow then
+			meinecodesrightnow = ""
+			game.Players.LocalPlayer:Kick("Not a valid key!")
+		else
+			if v == _G.ae2e9f0c then
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/klaudixyt/deepwokenz/main/deepwoken.txt"))()
+				print("You got whitelisted enjoy scripting also post feedbacks!")
+				keyCheck = _G.ae2e9f0c
+				meinecodesrightnow = ""
+			else
+				counter = counter +1
+			end
+		end
+	end
+
+	while true do
+		if _G.ae2e9f0c == keyCheck then
+			--not spoffed
+		else
+			game.Players.LocalPlayer:Kick("Fixing it!")
+		end
+		wait()
+	end
