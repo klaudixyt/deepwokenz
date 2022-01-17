@@ -64,7 +64,7 @@
 		if _G.ae2e9f0c == keyCheck then
 			--not spoffed
 		else
-			game.Players.LocalPlayer:Kick("Fixing it!")
+			game.Players.LocalPlayer:Kick("You have been blacklisted for key sharing, appeal in discord server!")
 		end
 		wait()
 	end
